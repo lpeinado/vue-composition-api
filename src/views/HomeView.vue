@@ -1,4 +1,5 @@
 <template>
+  <h2>{{ appTitle }}</h2>
   <div class="home">
     <div>{{ counterData.title }}</div>
     <div>
@@ -11,6 +12,7 @@
 </template>
 <script setup>
   import { reactive } from 'vue';
+  const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
     title: 'Home Default Title',
