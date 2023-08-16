@@ -9,15 +9,22 @@
     </div>
     <input type="text" v-model="counterData.title" />
     <!-- <pre>{{ eventObj }}</pre> -->
-    <p>ODD OR EVEN {{ oddOrEven }}</p>
+    <p>The counter now is: {{ oddOrEven }}</p>
   </div>
 </template>
 <script setup>
-  import { ref, reactive, computed } from 'vue';
+  import { ref, reactive, computed, watch } from 'vue';
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
     title: 'Home Default Title',
+  });
+  watch(() => counterData.counter, (newValue) => {
+    if(newValue > 10) {
+      counterData.title = 'Counter is greater than 10';
+    } else {
+      counterData.title = 'Counter is less than 10';
+    }
   });
   const eventObj = ref({});
 
