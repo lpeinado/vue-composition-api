@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup>
-  import { ref, reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted } from 'vue';
+  import { ref, reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated } from 'vue';
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
@@ -39,6 +39,12 @@
   });
   onUnmounted(() => {
     console.log('onUnmounted');
+  });
+  onActivated(() => {
+    console.log('onActivated');
+  });
+  onDeactivated(() => {
+    console.log('onDeactivated');
   });
 
   const increaseCounter = (amount, e) => {
