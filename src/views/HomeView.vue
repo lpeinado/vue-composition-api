@@ -7,7 +7,7 @@
       <span class="counter">{{ counterData.counter }}</span>
       <button class="btn" @click="increaseCounter(3, $event)">+</button>
     </div>
-    <input type="text" v-model="counterData.title" />
+    <input type="text" v-model="counterData.title" v-autofocus />
     <!-- <pre>{{ eventObj }}</pre> -->
     <p>The counter now is: {{ oddOrEven }}</p>
   </div>
@@ -27,6 +27,12 @@
     }
   });
   const eventObj = ref({});
+
+  const vAutofocus = {
+    mounted: (el)=>{
+      el.focus();
+    }
+  };
 
   onBeforeUpdate(() => {
     console.log('onBeforeUpdate');
