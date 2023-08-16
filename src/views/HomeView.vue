@@ -8,11 +8,12 @@
       <button class="btn" @click="increaseCounter(3, $event)">+</button>
     </div>
     <input type="text" v-model="counterData.title" />
-    <pre>{{ eventObj }}</pre>
+    <!-- <pre>{{ eventObj }}</pre> -->
+    <p>ODD OR EVEN {{ oddOrEven }}</p>
   </div>
 </template>
 <script setup>
-  import { ref, reactive } from 'vue';
+  import { ref, reactive, computed } from 'vue';
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
@@ -26,6 +27,10 @@
     eventObj.value = JSON.parse(JSON.stringify(e));
   }
   const decreaseCounter = amount => counterData.counter -= amount;
+
+  const oddOrEven = computed(() => {
+    return counterData.counter % 2 === 0 ? 'even' : 'odd';
+  });
 
 </script>
 
