@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup>
-  import { ref, reactive, computed, watch } from 'vue';
+  import { ref, reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted } from 'vue';
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
@@ -27,6 +27,19 @@
     }
   });
   const eventObj = ref({});
+
+  onBeforeMount(() => {
+    console.log('onBeforeMount');
+  });
+  onMounted(() => {
+    console.log('onMounted');
+  });
+  onBeforeUnmount(() => {
+    console.log('onBeforeUnmount');
+  });
+  onUnmounted(() => {
+    console.log('onUnmounted');
+  });
 
   const increaseCounter = (amount, e) => {
     counterData.counter += amount;
