@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup>
-  import { ref, reactive, computed, watch, onBeforeMount, onMounted, onBeforeUnmount, onUnmounted, onActivated, onDeactivated } from 'vue';
+  import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue';
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
@@ -28,28 +28,16 @@
   });
   const eventObj = ref({});
 
-  onBeforeMount(() => {
-    console.log('onBeforeMount');
+  onBeforeUpdate(() => {
+    console.log('onBeforeUpdate');
   });
-  onMounted(() => {
-    console.log('onMounted');
-  });
-  onBeforeUnmount(() => {
-    console.log('onBeforeUnmount');
-  });
-  onUnmounted(() => {
-    console.log('onUnmounted');
-  });
-  onActivated(() => {
-    console.log('onActivated');
-  });
-  onDeactivated(() => {
-    console.log('onDeactivated');
+  onUpdated(() => {
+    console.log('onUpdated');
   });
 
   const increaseCounter = (amount, e) => {
     counterData.counter += amount;
-    console.log(e);
+    //console.log(e);
     eventObj.value = JSON.parse(JSON.stringify(e));
   }
   const decreaseCounter = amount => counterData.counter -= amount;
