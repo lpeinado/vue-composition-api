@@ -14,6 +14,8 @@
 </template>
 <script setup>
   import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue';
+  import{ vAutofocus} from '@/directives/vAutofocus.ts';
+
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
@@ -27,12 +29,6 @@
     }
   });
   const eventObj = ref({});
-
-  const vAutofocus = {
-    mounted: (el)=>{
-      el.focus();
-    }
-  };
 
   onBeforeUpdate(() => {
     console.log('onBeforeUpdate');
