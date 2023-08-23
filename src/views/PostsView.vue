@@ -2,27 +2,29 @@
     <div>
         Posts view page
         <ul>
-            <li>
-                <router-link to="/postDetail/1"> Post 1</router-link>
-            </li>
-            <li>
-                <router-link to="/postDetail/2"> Post 2</router-link>
-            </li>
-            <li>
-                <router-link to="/postDetail/3"> Post 3</router-link>
-            </li>
-            <li>
-                <router-link to="/postDetail/4"> Post 4</router-link>
-            </li>
-            <li>
-                <router-link to="/postDetail/5"> Post 5</router-link>
+            <li v-for="post in arrayOfPosts"  key="post.id">
+                <router-link :to="`/postDetail/${post.id}`"> Post {{ post.id }}</router-link>
             </li>
         </ul>
     </div>
 </template>
 
 <script setup>
-
+import { ref } from 'vue'
+const arrayOfPosts = ref([
+    {id:1,
+    title: 'Post 1',
+    },
+    {id:2,
+    title: 'Post 2',
+    },
+    {id:3,
+    title: 'Post 3',
+    },
+    {id:4,
+    title: 'Post 4',
+    }
+]);
 </script>
 
 <style scoped>
