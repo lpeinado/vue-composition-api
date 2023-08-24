@@ -10,12 +10,17 @@
     <input type="text" v-model="counterData.title" v-autofocus />
     <!-- <pre>{{ eventObj }}</pre> -->
     <p>The counter now is: {{ oddOrEven }}</p>
+    <p>Now I put a checkbox managed with a v-model to see how easy it is:</p>
+    <hr>
+    <input type="checkbox" v-model="dummyCheckboxValue">
+    <pre>Value of the above checkbox: {{ dummyCheckboxValue }}</pre>
   </div>
 </template>
 <script setup>
   import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated, nextTick } from 'vue';
   import{ vAutofocus} from '@/directives/vAutofocus.ts';
 
+  const dummyCheckboxValue = ref(false);
   const counterRef = ref(null);
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
