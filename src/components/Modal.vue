@@ -2,8 +2,7 @@
     <div>
         <teleport to='body' >
             <div class="modal">
-                <h1>
-                    <slot name="title"/>
+                <h1>{{ title }}
                 </h1>
                 <slot />
                 <button @click="showModal = false">Hide modal</button>
@@ -11,13 +10,16 @@
         </teleport>
     </div>
 </template>
-
 <script setup>
-import { useSlots } from 'vue';
-const slots = useSlots();
+import { defineProps } from 'vue';
 
+const props = defineProps({
+    title: {
+        type: String,
+        default: "Default title",
+    }
+});
 </script>
-
 <style scoped>
 .modal{
     padding: 100px;
