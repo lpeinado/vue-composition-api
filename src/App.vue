@@ -7,9 +7,9 @@
       <RouterLink to="/about">About</RouterLink>
       <RouterLink to="/posts">Posts</RouterLink>
     </nav>
-    <KeepAlive>
-        <RouterView />
-    </KeepAlive>
+
+    <RouterView />
+
 
   </div>
 
