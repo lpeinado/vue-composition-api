@@ -3,7 +3,7 @@
         A single post detail page
     </h3>
     <p>This is the detail page for post with id <span style="color:red; font-weight:bold;">{{ route.params.id }}</span></p>
-    <button @click="showPostId">GET ID</button>
+    <button @click="showPostId" id="myButton">INCREMENTED ID {{ incrementedId }}</button>
     <div>
         <router-link to="/posts">&lt; Back to posts</router-link>
     </div>
@@ -16,17 +16,24 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onUpdated, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
+const incrementId = ref(0);
 const appTitleRef = ref(null);
 
 const showPostId = () => {
-    console.log("ROUTE OBJECT", route.fullPath);
-    console.log("ID", route.params.id);
+    // console.log("ROUTE OBJECT", route.fullPath);
+    // console.log("ID", route.params.id);
+    //document.getElementById("myButton").innerHTML = `GET ID ${route.params.id}` ;
+    incrementId.value++;
 };
+
+const incrementedId = computed(() => {
+    return route.params.id + incrementId.value;
+});
 
 const goHomeIn3 = () => {
     setTimeout(() => {
@@ -38,7 +45,7 @@ const goFirstPost = () => {
     router.push({ name : 'postDetail', params : { id : 1 } });
 };
 
-onMounted(() => {
+onUpdated(() => {
     console.log(`The app title width is ${appTitleRef.value.offsetWidth} pixels`);
 });
 
