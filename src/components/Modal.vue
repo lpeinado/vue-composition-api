@@ -5,21 +5,27 @@
                 <h1>{{ title }}
                 </h1>
                 <slot />
-                <button @click="showModal = false">Hide modal</button>
+                <button @click="handleButtonClick">Hide modal</button>
             </div>
         </teleport>
     </div>
 </template>
-<script setup>
-import { defineProps } from 'vue';
 
+<script setup>
 const props = defineProps({
     title: {
         type: String,
         default: "Default title",
     }
 });
+
+const emits = defineEmits(['hideModal']);
+
+const handleButtonClick = () => {
+    emits('hideModal');
+};
 </script>
+
 <style scoped>
 .modal{
     padding: 100px;
