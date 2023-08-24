@@ -4,7 +4,7 @@
     <div>{{ counterData.title }}</div>
     <div>
       <button class="btn" @click="decreaseCounter(2, $event)">-</button>
-      <span class="counter">{{ counterData.counter }}</span>
+      <span class="counter" ref="counterRef">{{ counterData.counter }}</span>
       <button class="btn" @click="increaseCounter(3, $event)">+</button>
     </div>
     <input type="text" v-model="counterData.title" v-autofocus />
@@ -13,9 +13,10 @@
   </div>
 </template>
 <script setup>
-  import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated } from 'vue';
+  import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated, nextTick } from 'vue';
   import{ vAutofocus} from '@/directives/vAutofocus.ts';
 
+  const counterRef = ref(null);
   const appTitle = 'My amazing couter app';
   const counterData = reactive({
     counter: 0,
@@ -37,10 +38,13 @@
     console.log('onUpdated');
   });
 
-  const increaseCounter = (amount, e) => {
+  const increaseCounter =  async(amount, e) => {
     counterData.counter += amount;
+    console.log("before next tick", counterRef.value.innerHTML);
+    await nextTick();
+    console.log("after next tick", counterRef.value.innerHTML);
     //console.log(e);
-    eventObj.value = JSON.parse(JSON.stringify(e));
+    //eventObj.value = JSON.parse(JSON.stringify(e));
   }
   const decreaseCounter = amount => counterData.counter -= amount;
 
