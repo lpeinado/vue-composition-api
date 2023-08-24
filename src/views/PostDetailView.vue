@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <h3 ref="appTitleRef">
         A single post detail page
-    </div>
+    </h3>
     <p>This is the detail page for post with id <span style="color:red; font-weight:bold;">{{ route.params.id }}</span></p>
     <button @click="showPostId">GET ID</button>
     <div>
@@ -16,10 +16,12 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
+const appTitleRef = ref(null);
 
 const showPostId = () => {
     console.log("ROUTE OBJECT", route.fullPath);
@@ -35,6 +37,10 @@ const goHomeIn3 = () => {
 const goFirstPost = () => {
     router.push({ name : 'postDetail', params : { id : 1 } });
 };
+
+onMounted(() => {
+    console.log(`The app title width is ${appTitleRef.value.offsetWidth} pixels`);
+});
 
 </script>
 
