@@ -2,6 +2,7 @@
     <div>
         <teleport to='body' >
             <div v-if="modelValue" class="modal">
+                <div>{{ userData.name }} @{{ userData.surname }}</div>
                 <h1>{{ title }}
                 </h1>
                 <slot />
@@ -20,7 +21,11 @@ const props = defineProps({
     title: {
         type: String,
         default: "Default title",
-    }
+    },
+    userData: {
+        type: Object,
+        default: () => ({}),
+    },
 });
 
 const emits = defineEmits(['update:modelValue']);

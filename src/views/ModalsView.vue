@@ -5,6 +5,7 @@
         <Modal
             v-model="showModal"
             title="Luigi was here"
+            :userData="props.userData"
         >
             <template #title>
                 <h3>Modal title</h3>
@@ -20,4 +21,10 @@ import{ ref } from 'vue';
 import Modal from '@/components/Modal.vue';
 
 const showModal = ref(false);
+const props = defineProps({
+    userData: {
+        type: Object,
+        default: () => ({}),
+    },
+});
 </script>

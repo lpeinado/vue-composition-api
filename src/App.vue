@@ -1,6 +1,7 @@
 
 <template>
   <div>
+    <div class="user-data">{{ userData.name }} @{{userData.surname }}</div>
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/modals">Modals</RouterLink>
@@ -8,12 +9,21 @@
       <RouterLink to="/posts">Posts</RouterLink>
     </nav>
 
-    <RouterView />
+    <RouterView :userData="userData"/>
 
 
   </div>
 
 </template>
+
+<script setup>
+  import { reactive } from 'vue';
+  const userData = reactive({
+    name: 'John',
+    surname: 'Doe',
+    age: 30,
+  });
+</script>
 
 <style scoped>
 header {
