@@ -14,11 +14,15 @@
     <hr>
     <input type="checkbox" v-model="dummyCheckboxValue">
     <pre>Value of the above checkbox: {{ dummyCheckboxValue }}</pre>
+    <div>Now we display a dynamic component with the :is  directive</div>
+    <component :is="dummyCheckboxValue ? ComponentB : ComponentA"></component>
   </div>
 </template>
 <script setup>
   import { ref, reactive, computed, watch, onBeforeUpdate, onUpdated, nextTick } from 'vue';
   import{ vAutofocus} from '@/directives/vAutofocus.ts';
+  import ComponentA from '@/components/ComponentA.vue';
+  import ComponentB from '@/components/ComponentB.vue';
 
   const dummyCheckboxValue = ref(false);
   const counterRef = ref(null);
