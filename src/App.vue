@@ -14,6 +14,20 @@
   </div>
 
 </template>
+<script setup>
+  import { provide, reactive } from 'vue';
+
+  const userData = reactive({
+    name: 'Luigi',
+    age: 32,
+    job: 'Plumber',
+  });
+
+  provide('userData', userData);
+
+</script>
+
+
 
 <style scoped>
 header {
