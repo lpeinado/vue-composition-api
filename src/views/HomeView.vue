@@ -1,5 +1,6 @@
 <template>
   <h2>{{ appTitle }}</h2>
+  <div>Is the user <i>Online</i>? : <span style="color:red;">{{ online ? 'Connected' : 'Disconnected' }}</span>  </div>
   <div class="home">
     <div>{{ counterData.title }}</div>
     <div>
@@ -24,10 +25,12 @@
   import ComponentA from '@/components/ComponentA.vue';
   import ComponentB from '@/components/ComponentB.vue';
   import { useCounter } from '@/use/useCounter';
+  import { useOnline } from '@vueuse/core'
 
   const dummyCheckboxValue = ref(false);
   const counterRef = ref(null);
   const appTitle = 'My amazing couter app';
+  const online = useOnline();
 
   const { counterData, increaseCounter, decreaseCounter, oddOrEven } = useCounter();
 </script>

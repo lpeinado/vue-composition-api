@@ -6,11 +6,17 @@
                 <router-link :to="`/postDetail/${post.id}`"> Post {{ post.id }}</router-link>
             </li>
         </ul>
+        <div>
+            <button :class="oddOrEven" class="counter-button" @click="increaseCounter(1)">{{ counterData.counter }} </button>
+        </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { useCounter } from '@/use/useCounter';
+
+const { counterData, increaseCounter, oddOrEven } = useCounter();
 const arrayOfPosts = ref([
     {id:1,
     title: 'Post 1',
@@ -28,5 +34,16 @@ const arrayOfPosts = ref([
 </script>
 
 <style scoped>
-
+ .counter-button {
+     font-size: 40px;
+     margin: 10px;
+     min-width: 100px;
+     min-height: 50px;
+ }
+ .odd {
+     background-color: red;
+ }
+    .even {
+        background-color: green;
+    }
 </style>
