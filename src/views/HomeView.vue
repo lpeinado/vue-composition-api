@@ -2,15 +2,15 @@
   <h2>{{ appTitle }}</h2>
   <div>Is the user <i>Online</i>? : <span style="color:red;">{{ online ? 'Connected' : 'Disconnected' }}</span>  </div>
   <div class="home">
-    <div>{{ counterData.title }}</div>
+    <div>{{ counter.title }}</div>
     <div>
-      <button class="btn" @click="decreaseCounter(2, $event)">-</button>
-      <span class="counter" ref="counterRef">{{ counterData.counter }}</span>
-      <button class="btn" @click="increaseCounter(3, $event)">+</button>
+      <button class="btn" >-</button>
+      <span class="counter" ref="counterRef">{{ counter.count }}</span>
+      <button class="btn" >+</button>
     </div>
-    <input type="text" v-model="counterData.title" v-autofocus />
+    <input type="text" v-autofocus />
     <!-- <pre>{{ eventObj }}</pre> -->
-    <p>The counter now is: {{ oddOrEven }}</p>
+    <p>The counter now is: HARDCODED EVEN</p>
     <p>Now I put a checkbox managed with a v-model to see how easy it is:</p>
     <hr>
     <input type="checkbox" v-model="dummyCheckboxValue">
@@ -24,15 +24,15 @@
   import{ vAutofocus} from '@/directives/vAutofocus.ts';
   import ComponentA from '@/components/ComponentA.vue';
   import ComponentB from '@/components/ComponentB.vue';
-  import { useCounter } from '@/use/useCounter';
   import { useOnline } from '@vueuse/core'
+  import { useCounterStore } from '@/stores/counter';
 
   const dummyCheckboxValue = ref(false);
   const counterRef = ref(null);
   const appTitle = 'My amazing couter app';
   const online = useOnline();
 
-  const { counterData, increaseCounter, decreaseCounter, oddOrEven } = useCounter();
+  const counter = useCounterStore();
 </script>
 
 <style>
