@@ -6,5 +6,13 @@ export const useCounterStore = defineStore({
   state:()=>({
     count: 0,
     title:'My Pinia store title'
-  })
+  }),
+  actions: {
+    increaseCounter() {
+      this.count++;
+    },
+    decreaseCounter() {
+      this.count--;
+    }
+  }
 });

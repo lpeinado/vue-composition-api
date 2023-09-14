@@ -4,9 +4,9 @@
   <div class="home">
     <div>{{ counter.title }}</div>
     <div>
-      <button class="btn" >-</button>
+      <button class="btn" @click="counter.decreaseCounter">-</button>
       <span class="counter" ref="counterRef">{{ counter.count }}</span>
-      <button class="btn" >+</button>
+      <button class="btn" @click="counter.increaseCounter">+</button>
     </div>
     <input type="text" v-autofocus />
     <!-- <pre>{{ eventObj }}</pre> -->
