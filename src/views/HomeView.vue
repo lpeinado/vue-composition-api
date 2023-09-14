@@ -12,7 +12,7 @@
     </div>
     <input type="text" v-autofocus />
     <!-- <pre>{{ eventObj }}</pre> -->
-    <p>The counter now is: HARDCODED EVEN</p>
+    <p>The counter now is: {{ counter.oddOrEven }}</p>
     <p>Now I put a checkbox managed with a v-model to see how easy it is:</p>
     <hr>
     <input type="checkbox" v-model="dummyCheckboxValue">

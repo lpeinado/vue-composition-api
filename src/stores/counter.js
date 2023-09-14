@@ -14,5 +14,11 @@ export const useCounterStore = defineStore({
     decreaseCounter(amount) {
       this.count -= amount;
     }
+  },
+  getters: {
+    oddOrEven(){
+      if (this.count % 2 === 0) return 'Even'
+      return 'Odd'
+    }
   }
 });
