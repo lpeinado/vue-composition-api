@@ -8,11 +8,11 @@ export const useCounterStore = defineStore({
     title:'My Pinia store title'
   }),
   actions: {
-    increaseCounter() {
-      this.count++;
+    increaseCounter(amount) {
+      this.count += amount;
     },
-    decreaseCounter() {
-      this.count--;
+    decreaseCounter(amount) {
+      this.count -= amount;
     }
   }
 });
