@@ -7,16 +7,17 @@
             </li>
         </ul>
         <div>
-            <button :class="oddOrEven" class="counter-button" @click="increaseCounter(1)">{{ counterData.counter }} </button>
+            <button :class="counter.oddOrEven.toLowerCase()" class="counter-button" @click="counter.increaseCounter(1)">{{ counter.count }} </button>
         </div>
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { useCounter } from '@/use/useCounter';
 
-const { counterData, increaseCounter, oddOrEven } = useCounter();
+import { useCounterStore } from '@/stores/counter';
+const counter = useCounterStore();
+
 const arrayOfPosts = ref([
     {id:1,
     title: 'Post 1',
